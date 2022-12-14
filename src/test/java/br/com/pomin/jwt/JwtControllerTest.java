@@ -27,8 +27,10 @@ class JwtControllerTest {
     @Test
     void hello() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/hello")
-                .accept(MediaType.APPLICATION_JSON))
+                    .accept(MediaType.APPLICATION_JSON)
+                    .header("jwt", "xxx")
+                )
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(content().string(equalTo("Opaaaa tamo ai")));
+                .andExpect(content().string(equalTo("Opaaaa tamo ai: xxx")));
     }
 }
